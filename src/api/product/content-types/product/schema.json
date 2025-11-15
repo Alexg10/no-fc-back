@@ -24,6 +24,11 @@
     "shopifyId": {
       "type": "string",
       "unique": true
+    },
+    "handle": {
+      "type": "string",
+      "unique": true,
+      "required": true
     }
   }
 }

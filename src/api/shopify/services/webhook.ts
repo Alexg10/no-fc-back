@@ -47,6 +47,7 @@ export default {
         description: productData.body_html || "",
         price: parseFloat(productData.variants?.[0]?.price || "0"),
         shopifyId: productData.id.toString(),
+        handle: productData.handle || null,
       };
 
       if (existingProducts && existingProducts.length > 0) {
@@ -122,6 +123,7 @@ export default {
             description: productData.body_html || "",
             price: parseFloat(productData.variants?.[0]?.price || "0"),
             shopifyId: productData.id.toString(),
+            handle: productData.handle || null,
           },
         }
       );
