@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_products",
+  "info": {
+    "singularName": "home-product",
+    "pluralName": "home-products",
+    "displayName": "Home products"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  }
+}

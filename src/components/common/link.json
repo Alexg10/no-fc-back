@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_common_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "_self",
+        "_blank"
+      ]
+    }
+  },
+  "config": {}
+}

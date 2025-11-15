@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_common_centered_texts",
+  "info": {
+    "displayName": "Centered text",
+    "icon": "filter"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}
