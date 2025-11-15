@@ -27,8 +27,14 @@
     },
     "handle": {
       "type": "string",
-      "unique": true,
-      "required": true
+      "required": true,
+      "unique": true
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "common.centered-text"
+      ]
     }
   }
 }
