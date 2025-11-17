@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_homepage_home_products",
+  "info": {
+    "displayName": "Home products",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  },
+  "config": {}
+}

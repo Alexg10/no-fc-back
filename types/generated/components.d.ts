@@ -54,6 +54,18 @@ export interface HomepageHero extends Struct.ComponentSchema {
   };
 }
 
+export interface HomepageHomeProducts extends Struct.ComponentSchema {
+  collectionName: 'components_homepage_home_products';
+  info: {
+    displayName: 'Home products';
+    icon: 'bulletList';
+  };
+  attributes: {
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    title: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -61,6 +73,7 @@ declare module '@strapi/strapi' {
       'common.link': CommonLink;
       'common.seo': CommonSeo;
       'homepage.hero': HomepageHero;
+      'homepage.home-products': HomepageHomeProducts;
     }
   }
 }
