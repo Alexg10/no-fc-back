@@ -25,14 +25,14 @@
       "component": "common.seo",
       "repeatable": false
     },
-    "hero": {
+    "heroArticle": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "homepage.hero",
+      "component": "homepage.hero-article",
       "repeatable": false
     },
     "blocks": {

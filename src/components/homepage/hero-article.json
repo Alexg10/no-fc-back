@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_homepage_hero_articles",
+  "info": {
+    "displayName": "Hero article",
+    "icon": "attachment"
+  },
+  "options": {},
+  "attributes": {
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    }
+  },
+  "config": {}
+}

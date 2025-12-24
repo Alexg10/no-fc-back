@@ -1,5 +1,68 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ArticleCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_article_carousels';
+  info: {
+    displayName: 'Carousel';
+    icon: 'landscape';
+  };
+  attributes: {
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
+export interface ArticleDescription extends Struct.ComponentSchema {
+  collectionName: 'components_article_descriptions';
+  info: {
+    displayName: 'Description';
+    icon: 'bulletList';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks;
+  };
+}
+
+export interface ArticleImages extends Struct.ComponentSchema {
+  collectionName: 'components_article_images';
+  info: {
+    displayName: 'Images';
+    icon: 'landscape';
+  };
+  attributes: {
+    images: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
+  };
+}
+
+export interface ArticleQuote extends Struct.ComponentSchema {
+  collectionName: 'components_article_quotes';
+  info: {
+    displayName: 'Quote';
+    icon: 'quote';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    quote: Schema.Attribute.Blocks;
+  };
+}
+
+export interface ArticleTitleContent extends Struct.ComponentSchema {
+  collectionName: 'components_article_title_contents';
+  info: {
+    displayName: 'Title content';
+    icon: 'layer';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+    twoColumns: Schema.Attribute.Boolean;
+  };
+}
+
 export interface CommonCenteredText extends Struct.ComponentSchema {
   collectionName: 'components_common_centered_texts';
   info: {
@@ -54,6 +117,17 @@ export interface HomepageHero extends Struct.ComponentSchema {
   };
 }
 
+export interface HomepageHeroArticle extends Struct.ComponentSchema {
+  collectionName: 'components_homepage_hero_articles';
+  info: {
+    displayName: 'Hero article';
+    icon: 'attachment';
+  };
+  attributes: {
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
+  };
+}
+
 export interface HomepageHomeProducts extends Struct.ComponentSchema {
   collectionName: 'components_homepage_home_products';
   info: {
@@ -66,14 +140,55 @@ export interface HomepageHomeProducts extends Struct.ComponentSchema {
   };
 }
 
+export interface SimplePageContent extends Struct.ComponentSchema {
+  collectionName: 'components_simple_page_contents';
+  info: {
+    displayName: 'Content';
+    icon: 'layer';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+  };
+}
+
+export interface SimplePageFaqSection extends Struct.ComponentSchema {
+  collectionName: 'components_simple_page_faq_sections';
+  info: {
+    displayName: 'Faq section';
+  };
+  attributes: {
+    faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SimplePageFaqs extends Struct.ComponentSchema {
+  collectionName: 'components_simple_page_faqs';
+  info: {
+    displayName: 'Faqs';
+  };
+  attributes: {
+    faqSections: Schema.Attribute.Component<'simple-page.faq-section', true>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'article.carousel': ArticleCarousel;
+      'article.description': ArticleDescription;
+      'article.images': ArticleImages;
+      'article.quote': ArticleQuote;
+      'article.title-content': ArticleTitleContent;
       'common.centered-text': CommonCenteredText;
       'common.link': CommonLink;
       'common.seo': CommonSeo;
       'homepage.hero': HomepageHero;
+      'homepage.hero-article': HomepageHeroArticle;
       'homepage.home-products': HomepageHomeProducts;
+      'simple-page.content': SimplePageContent;
+      'simple-page.faq-section': SimplePageFaqSection;
+      'simple-page.faqs': SimplePageFaqs;
     }
   }
 }

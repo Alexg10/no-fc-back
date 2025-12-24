@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_article_descriptions",
+  "info": {
+    "displayName": "Description",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

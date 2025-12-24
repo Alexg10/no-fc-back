@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_simple_page_faqs",
+  "info": {
+    "displayName": "Faqs"
+  },
+  "options": {},
+  "attributes": {
+    "faqSections": {
+      "type": "component",
+      "component": "simple-page.faq-section",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

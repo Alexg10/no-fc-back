@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_article_images",
+  "info": {
+    "displayName": "Images",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}
