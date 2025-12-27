@@ -36,6 +36,17 @@ export interface ArticleImages extends Struct.ComponentSchema {
   };
 }
 
+export interface ArticleProduct extends Struct.ComponentSchema {
+  collectionName: 'components_article_products';
+  info: {
+    displayName: 'Product';
+    icon: 'store';
+  };
+  attributes: {
+    product: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
+  };
+}
+
 export interface ArticleQuote extends Struct.ComponentSchema {
   collectionName: 'components_article_quotes';
   info: {
@@ -178,6 +189,7 @@ declare module '@strapi/strapi' {
       'article.carousel': ArticleCarousel;
       'article.description': ArticleDescription;
       'article.images': ArticleImages;
+      'article.product': ArticleProduct;
       'article.quote': ArticleQuote;
       'article.title-content': ArticleTitleContent;
       'common.centered-text': CommonCenteredText;

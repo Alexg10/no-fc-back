@@ -490,6 +490,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'article.carousel',
         'article.title-content',
         'article.images',
+        'article.product',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

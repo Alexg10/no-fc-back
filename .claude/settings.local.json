@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(xargs:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

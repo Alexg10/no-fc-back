@@ -69,7 +69,8 @@
         "article.description",
         "article.carousel",
         "article.title-content",
-        "article.images"
+        "article.images",
+        "article.product"
       ]
     }
   }
