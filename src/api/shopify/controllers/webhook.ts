@@ -151,6 +151,27 @@ export default {
               .processProductDelete(productData);
             break;
 
+          case "collections/create":
+            strapi.log.info("Création de collection depuis Shopify");
+            await strapi
+              .service("api::shopify.webhook")
+              .processCollectionCreate(productData);
+            break;
+
+          case "collections/update":
+            strapi.log.info("Mise à jour de collection depuis Shopify");
+            await strapi
+              .service("api::shopify.webhook")
+              .processCollectionUpdate(productData);
+            break;
+
+          case "collections/delete":
+            strapi.log.info("Suppression de collection depuis Shopify");
+            await strapi
+              .service("api::shopify.webhook")
+              .processCollectionDelete(productData);
+            break;
+
           default:
             strapi.log.warn(`Webhook topic non géré: ${webhookTopic}`);
         }

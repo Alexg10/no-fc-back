@@ -111,6 +111,20 @@ export interface CommonSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonVideoFullWidth extends Struct.ComponentSchema {
+  collectionName: 'components_common_video_full_widths';
+  info: {
+    displayName: 'Video full width';
+    icon: 'play';
+  };
+  attributes: {
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    playerText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Play video'>;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface HomepageHero extends Struct.ComponentSchema {
   collectionName: 'components_homepage_heroes';
   info: {
@@ -195,6 +209,7 @@ declare module '@strapi/strapi' {
       'common.centered-text': CommonCenteredText;
       'common.link': CommonLink;
       'common.seo': CommonSeo;
+      'common.video-full-width': CommonVideoFullWidth;
       'homepage.hero': HomepageHero;
       'homepage.hero-article': HomepageHeroArticle;
       'homepage.home-products': HomepageHomeProducts;

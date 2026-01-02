@@ -169,4 +169,163 @@ export default {
       );
     }
   },
+
+  /**
+   * Traite la création d'une collection depuis Shopify
+   */
+  async processCollectionCreate(collectionData: any) {
+    try {
+      strapi.log.info("Création de la collection", {
+        shopifyId: collectionData.id,
+        title: collectionData.title,
+      });
+
+      // Vérifier si la collection existe déjà
+      const existingCollections = await strapi.entityService.findMany(
+        "api::collection.collection",
+        {
+          filters: { shopifyId: collectionData.id.toString() },
+          limit: 1,
+        }
+      );
+
+      if (existingCollections && existingCollections.length > 0) {
+        strapi.log.info("Collection existe déjà, mise à jour à la place", {
+          id: existingCollections[0].id,
+          shopifyId: collectionData.id,
+        });
+        return await this.processCollectionUpdate(collectionData);
+      }
+
+      const collection = await strapi.entityService.create(
+        "api::collection.collection",
+        {
+          data: {
+            title: collectionData.title || "Sans titre",
+            shopifyId: collectionData.id.toString(),
+          },
+        }
+      );
+
+      strapi.log.info("Collection créée avec succès", {
+        id: collection.id,
+        shopifyId: collection.shopifyId,
+      });
+      return collection;
+    } catch (error: any) {
+      strapi.log.error("Erreur lors de la création de la collection", {
+        error: error.message,
+        stack: error.stack,
+        collectionData: {
+          id: collectionData.id,
+          title: collectionData.title,
+          shopifyId: collectionData.id?.toString(),
+        },
+      });
+      throw error;
+    }
+  },
+
+  /**
+   * Traite la mise à jour d'une collection depuis Shopify
+   */
+  async processCollectionUpdate(collectionData: any) {
+    try {
+      strapi.log.info("Mise à jour de la collection", {
+        shopifyId: collectionData.id,
+        title: collectionData.title,
+      });
+
+      // Synchroniser les données de la collection avec Strapi
+      const existingCollections = await strapi.entityService.findMany(
+        "api::collection.collection",
+        {
+          filters: { shopifyId: collectionData.id.toString() },
+          limit: 1,
+        }
+      );
+
+      const collectionDataToUpdate = {
+        title: collectionData.title || "Sans titre",
+        shopifyId: collectionData.id.toString(),
+      };
+
+      if (existingCollections && existingCollections.length > 0) {
+        const updated = await strapi.entityService.update(
+          "api::collection.collection",
+          existingCollections[0].id,
+          {
+            data: collectionDataToUpdate,
+          }
+        );
+        strapi.log.info("Collection mise à jour", {
+          id: updated.id,
+          shopifyId: updated.shopifyId,
+        });
+        return updated;
+      } else {
+        // Créer une nouvelle collection si elle n'existe pas
+        const created = await strapi.entityService.create(
+          "api::collection.collection",
+          {
+            data: collectionDataToUpdate,
+          }
+        );
+        strapi.log.info("Collection créée (via update)", {
+          id: created.id,
+          shopifyId: created.shopifyId,
+        });
+        return created;
+      }
+    } catch (error: any) {
+      strapi.log.error("Erreur lors de la mise à jour de la collection", {
+        error: error.message,
+        stack: error.stack,
+        collectionData: collectionData.id,
+      });
+      throw error;
+    }
+  },
+
+  /**
+   * Traite la suppression d'une collection depuis Shopify
+   */
+  async processCollectionDelete(collectionData: any) {
+    try {
+      strapi.log.info("Suppression de la collection", {
+        shopifyId: collectionData.id,
+      });
+
+      const existingCollection = await strapi.entityService.findMany(
+        "api::collection.collection",
+        {
+          filters: { shopifyId: collectionData.id.toString() },
+          limit: 1,
+        }
+      );
+
+      if (existingCollection && existingCollection.length > 0) {
+        const deleted = await strapi.entityService.delete(
+          "api::collection.collection",
+          existingCollection[0].id
+        );
+        strapi.log.info("Collection supprimée avec succès", {
+          id: existingCollection[0].id,
+          shopifyId: collectionData.id,
+        });
+        return deleted;
+      } else {
+        strapi.log.warn("Collection non trouvée pour suppression", {
+          shopifyId: collectionData.id,
+        });
+      }
+    } catch (error: any) {
+      strapi.log.error("Erreur lors de la suppression de la collection", {
+        error: error.message,
+        stack: error.stack,
+        collectionData: collectionData.id,
+      });
+      throw error;
+    }
+  },
 };

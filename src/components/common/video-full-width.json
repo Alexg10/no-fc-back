@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_common_video_full_widths",
+  "info": {
+    "displayName": "Video full width",
+    "icon": "play"
+  },
+  "options": {},
+  "attributes": {
+    "playerText": {
+      "type": "string",
+      "default": "Play video"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
