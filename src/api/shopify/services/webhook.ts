@@ -203,6 +203,7 @@ export default {
           data: {
             title: collectionData.title || "Sans titre",
             shopifyId: collectionData.id.toString(),
+            handle: collectionData.handle || null,
           },
         }
       );
@@ -248,6 +249,7 @@ export default {
       const collectionDataToUpdate = {
         title: collectionData.title || "Sans titre",
         shopifyId: collectionData.id.toString(),
+        handle: collectionData.handle || null,
       };
 
       if (existingCollections && existingCollections.length > 0) {

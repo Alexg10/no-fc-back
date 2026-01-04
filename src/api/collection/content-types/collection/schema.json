@@ -36,6 +36,16 @@
           "localized": false
         }
       }
+    },
+    "handle": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

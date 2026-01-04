@@ -165,6 +165,21 @@ export interface HomepageHomeProducts extends Struct.ComponentSchema {
   };
 }
 
+export interface ProductsHero extends Struct.ComponentSchema {
+  collectionName: 'components_products_heroes';
+  info: {
+    displayName: 'Hero';
+    icon: 'expand';
+  };
+  attributes: {
+    btnLabel: Schema.Attribute.String;
+    btnLink: Schema.Attribute.String;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SimplePageContent extends Struct.ComponentSchema {
   collectionName: 'components_simple_page_contents';
   info: {
@@ -213,6 +228,7 @@ declare module '@strapi/strapi' {
       'homepage.hero': HomepageHero;
       'homepage.hero-article': HomepageHeroArticle;
       'homepage.home-products': HomepageHomeProducts;
+      'products.hero': ProductsHero;
       'simple-page.content': SimplePageContent;
       'simple-page.faq-section': SimplePageFaqSection;
       'simple-page.faqs': SimplePageFaqs;

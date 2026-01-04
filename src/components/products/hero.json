@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_products_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "expand"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "btnLabel": {
+      "type": "string"
+    },
+    "btnLink": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
