@@ -7,6 +7,12 @@ export interface ArticleCarousel extends Struct.ComponentSchema {
     icon: 'landscape';
   };
   attributes: {
+    backgroundColor: Schema.Attribute.Enumeration<
+      ['white', 'black', 'lime', 'pink', 'blue']
+    >;
+    backgroundImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -17,11 +23,38 @@ export interface ArticleCarousel extends Struct.ComponentSchema {
 export interface ArticleDescription extends Struct.ComponentSchema {
   collectionName: 'components_article_descriptions';
   info: {
-    displayName: 'Description';
+    displayName: 'Intro';
     icon: 'bulletList';
   };
   attributes: {
     description: Schema.Attribute.Blocks;
+  };
+}
+
+export interface ArticleImageCols extends Struct.ComponentSchema {
+  collectionName: 'components_article_image_cols';
+  info: {
+    displayName: 'ImageCols';
+    icon: 'bulletList';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imageRight: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ArticleImageStack extends Struct.ComponentSchema {
+  collectionName: 'components_article_image_stacks';
+  info: {
+    displayName: 'ImageStack';
+    icon: 'picture';
+  };
+  attributes: {
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
   };
 }
 
@@ -165,6 +198,17 @@ export interface HomepageHomeProducts extends Struct.ComponentSchema {
   };
 }
 
+export interface HomepageNewestArticles extends Struct.ComponentSchema {
+  collectionName: 'components_homepage_newest_articles';
+  info: {
+    displayName: 'Newest articles';
+    icon: 'cast';
+  };
+  attributes: {
+    title: Schema.Attribute.Blocks;
+  };
+}
+
 export interface ProductsHero extends Struct.ComponentSchema {
   collectionName: 'components_products_heroes';
   info: {
@@ -217,6 +261,8 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'article.carousel': ArticleCarousel;
       'article.description': ArticleDescription;
+      'article.image-cols': ArticleImageCols;
+      'article.image-stack': ArticleImageStack;
       'article.images': ArticleImages;
       'article.product': ArticleProduct;
       'article.quote': ArticleQuote;
@@ -228,6 +274,7 @@ declare module '@strapi/strapi' {
       'homepage.hero': HomepageHero;
       'homepage.hero-article': HomepageHeroArticle;
       'homepage.home-products': HomepageHomeProducts;
+      'homepage.newest-articles': HomepageNewestArticles;
       'products.hero': ProductsHero;
       'simple-page.content': SimplePageContent;
       'simple-page.faq-section': SimplePageFaqSection;

@@ -491,6 +491,8 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'article.title-content',
         'article.images',
         'article.product',
+        'article.image-cols',
+        'article.image-stack',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -513,12 +515,31 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    issueNumber: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::article.article'
     >;
+    mainColor: Schema.Attribute.Enumeration<['lime', 'pink', 'blue']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'lime'>;
     publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -707,6 +728,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'common.centered-text',
         'homepage.home-products',
         'common.video-full-width',
+        'homepage.newest-articles',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

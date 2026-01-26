@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_article_image_stacks",
+  "info": {
+    "displayName": "ImageStack",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

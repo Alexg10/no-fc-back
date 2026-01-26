@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_homepage_newest_articles",
+  "info": {
+    "displayName": "Newest articles",
+    "icon": "cast"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

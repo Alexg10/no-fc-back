@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_article_image_cols",
+  "info": {
+    "displayName": "ImageCols",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageRight": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

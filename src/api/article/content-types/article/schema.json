@@ -27,6 +27,28 @@
       "type": "uid",
       "targetField": "title"
     },
+    "issueNumber": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "mainColor": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "lime",
+      "enum": [
+        "lime",
+        "pink",
+        "blue"
+      ]
+    },
     "cover": {
       "type": "media",
       "pluginOptions": {
@@ -41,6 +63,14 @@
         "videos",
         "audios"
       ]
+    },
+    "shortDescription": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "image": {
       "type": "media",
@@ -70,7 +100,9 @@
         "article.carousel",
         "article.title-content",
         "article.images",
-        "article.product"
+        "article.product",
+        "article.image-cols",
+        "article.image-stack"
       ]
     }
   }
