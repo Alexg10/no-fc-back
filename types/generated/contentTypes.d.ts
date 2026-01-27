@@ -493,6 +493,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'article.product',
         'article.image-cols',
         'article.image-stack',
+        'article.credits',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

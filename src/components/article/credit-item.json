@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_article_credit_items",
+  "info": {
+    "displayName": "Credit Item",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

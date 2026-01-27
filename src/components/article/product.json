@@ -10,6 +10,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::product.product"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   },
   "config": {}

@@ -20,6 +20,29 @@ export interface ArticleCarousel extends Struct.ComponentSchema {
   };
 }
 
+export interface ArticleCreditItem extends Struct.ComponentSchema {
+  collectionName: 'components_article_credit_items';
+  info: {
+    displayName: 'Credit Item';
+    icon: 'bulletList';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ArticleCredits extends Struct.ComponentSchema {
+  collectionName: 'components_article_credits';
+  info: {
+    displayName: 'Credits';
+    icon: 'user';
+  };
+  attributes: {
+    credit: Schema.Attribute.Component<'article.credit-item', true>;
+  };
+}
+
 export interface ArticleDescription extends Struct.ComponentSchema {
   collectionName: 'components_article_descriptions';
   info: {
@@ -76,6 +99,9 @@ export interface ArticleProduct extends Struct.ComponentSchema {
     icon: 'store';
   };
   attributes: {
+    backgroundImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     product: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
   };
 }
@@ -267,6 +293,8 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'article.carousel': ArticleCarousel;
+      'article.credit-item': ArticleCreditItem;
+      'article.credits': ArticleCredits;
       'article.description': ArticleDescription;
       'article.image-cols': ArticleImageCols;
       'article.image-stack': ArticleImageStack;

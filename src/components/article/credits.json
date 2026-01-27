@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_article_credits",
+  "info": {
+    "displayName": "Credits",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "credit": {
+      "type": "component",
+      "component": "article.credit-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
