@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_common_menu_marques",
+  "info": {
+    "displayName": "Menu Marque",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

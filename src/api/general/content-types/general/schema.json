@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "footers",
+  "collectionName": "generals",
   "info": {
-    "singularName": "footer",
-    "pluralName": "footers",
-    "displayName": "Footer"
+    "singularName": "general",
+    "pluralName": "generals",
+    "displayName": "General"
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-    "topLinks": {
+    "socials": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
@@ -25,15 +25,15 @@
       "component": "common.link",
       "repeatable": true
     },
-    "bottomLinks": {
+    "marquee": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "common.link",
-      "repeatable": true
+      "component": "common.menu-marque",
+      "repeatable": false
     }
   }
 }

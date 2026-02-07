@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_article_columns_blocks",
+  "info": {
+    "displayName": "Columns blocks",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "intro": {
+      "type": "blocks"
+    },
+    "column": {
+      "type": "component",
+      "component": "article.columns-blocks-column",
+      "repeatable": true,
+      "min": 1,
+      "max": 2
+    }
+  },
+  "config": {}
+}

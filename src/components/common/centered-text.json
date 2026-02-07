@@ -6,8 +6,16 @@
   },
   "options": {},
   "attributes": {
+    "title": {
+      "type": "blocks"
+    },
     "content": {
       "type": "blocks"
+    },
+    "button": {
+      "type": "component",
+      "component": "common.link",
+      "repeatable": false
     }
   },
   "config": {}

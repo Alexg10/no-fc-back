@@ -46,7 +46,9 @@
       "enum": [
         "lime",
         "pink",
-        "blue"
+        "blue",
+        "white",
+        "black"
       ]
     },
     "cover": {
@@ -103,7 +105,10 @@
         "article.product",
         "article.image-cols",
         "article.image-stack",
-        "article.credits"
+        "article.credits",
+        "article.custom-container",
+        "article.columns-blocks",
+        "article.large-image"
       ]
     }
   }

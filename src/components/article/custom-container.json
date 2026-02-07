@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_article_custom_containers",
+  "info": {
+    "displayName": "Custom container",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "whiteText": {
+      "type": "boolean",
+      "default": true
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "default": "black",
+      "enum": [
+        "black",
+        "white",
+        "grey",
+        "lime",
+        "pink",
+        "blue"
+      ]
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

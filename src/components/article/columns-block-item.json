@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_article_columns_block_items",
+  "info": {
+    "displayName": "Columns block item"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "content": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

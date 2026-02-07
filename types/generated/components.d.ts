@@ -20,6 +20,50 @@ export interface ArticleCarousel extends Struct.ComponentSchema {
   };
 }
 
+export interface ArticleColumnsBlockItem extends Struct.ComponentSchema {
+  collectionName: 'components_article_columns_block_items';
+  info: {
+    displayName: 'Columns block item';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ArticleColumnsBlocks extends Struct.ComponentSchema {
+  collectionName: 'components_article_columns_blocks';
+  info: {
+    displayName: 'Columns blocks';
+    icon: 'layer';
+  };
+  attributes: {
+    column: Schema.Attribute.Component<'article.columns-blocks-column', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+          min: 1;
+        },
+        number
+      >;
+    intro: Schema.Attribute.Blocks;
+  };
+}
+
+export interface ArticleColumnsBlocksColumn extends Struct.ComponentSchema {
+  collectionName: 'components_article_columns_blocks_columns';
+  info: {
+    displayName: 'Columns blocks column';
+  };
+  attributes: {
+    columnBlockItem: Schema.Attribute.Component<
+      'article.columns-block-item',
+      true
+    >;
+  };
+}
+
 export interface ArticleCreditItem extends Struct.ComponentSchema {
   collectionName: 'components_article_credit_items';
   info: {
@@ -40,6 +84,25 @@ export interface ArticleCredits extends Struct.ComponentSchema {
   };
   attributes: {
     credit: Schema.Attribute.Component<'article.credit-item', true>;
+  };
+}
+
+export interface ArticleCustomContainer extends Struct.ComponentSchema {
+  collectionName: 'components_article_custom_containers';
+  info: {
+    displayName: 'Custom container';
+    icon: 'archive';
+  };
+  attributes: {
+    backgroundColor: Schema.Attribute.Enumeration<
+      ['black', 'white', 'grey', 'lime', 'pink', 'blue']
+    > &
+      Schema.Attribute.DefaultTo<'black'>;
+    backgroundImage: Schema.Attribute.Media<'images'>;
+    content: Schema.Attribute.Blocks;
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    whiteText: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -89,6 +152,17 @@ export interface ArticleImages extends Struct.ComponentSchema {
   };
   attributes: {
     images: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
+  };
+}
+
+export interface ArticleLargeImage extends Struct.ComponentSchema {
+  collectionName: 'components_article_large_images';
+  info: {
+    displayName: 'Large image';
+    icon: 'picture';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -147,7 +221,9 @@ export interface CommonCenteredText extends Struct.ComponentSchema {
     icon: 'filter';
   };
   attributes: {
+    button: Schema.Attribute.Component<'common.link', false>;
     content: Schema.Attribute.Blocks;
+    title: Schema.Attribute.Blocks;
   };
 }
 
@@ -161,6 +237,33 @@ export interface CommonLink extends Struct.ComponentSchema {
     label: Schema.Attribute.String;
     link: Schema.Attribute.String;
     target: Schema.Attribute.Enumeration<['_self', '_blank']>;
+  };
+}
+
+export interface CommonMenuMarque extends Struct.ComponentSchema {
+  collectionName: 'components_common_menu_marques';
+  info: {
+    displayName: 'Menu Marque';
+    icon: 'arrowRight';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    link: Schema.Attribute.String;
+  };
+}
+
+export interface CommonSectionPush extends Struct.ComponentSchema {
+  collectionName: 'components_common_section_pushes';
+  info: {
+    displayName: 'Section push';
+    icon: 'bell';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'common.link', false>;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+    whiteText: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 
@@ -293,17 +396,24 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'article.carousel': ArticleCarousel;
+      'article.columns-block-item': ArticleColumnsBlockItem;
+      'article.columns-blocks': ArticleColumnsBlocks;
+      'article.columns-blocks-column': ArticleColumnsBlocksColumn;
       'article.credit-item': ArticleCreditItem;
       'article.credits': ArticleCredits;
+      'article.custom-container': ArticleCustomContainer;
       'article.description': ArticleDescription;
       'article.image-cols': ArticleImageCols;
       'article.image-stack': ArticleImageStack;
       'article.images': ArticleImages;
+      'article.large-image': ArticleLargeImage;
       'article.product': ArticleProduct;
       'article.quote': ArticleQuote;
       'article.title-content': ArticleTitleContent;
       'common.centered-text': CommonCenteredText;
       'common.link': CommonLink;
+      'common.menu-marque': CommonMenuMarque;
+      'common.section-push': CommonSectionPush;
       'common.seo': CommonSeo;
       'common.video-full-width': CommonVideoFullWidth;
       'homepage.hero': HomepageHero;

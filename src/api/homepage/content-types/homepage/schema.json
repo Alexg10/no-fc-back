@@ -46,7 +46,8 @@
         "common.centered-text",
         "homepage.home-products",
         "common.video-full-width",
-        "homepage.newest-articles"
+        "homepage.newest-articles",
+        "common.section-push"
       ]
     }
   }
