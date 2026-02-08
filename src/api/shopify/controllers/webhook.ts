@@ -114,12 +114,14 @@ export default {
           bodiesMatch: bodyForHmac === parsedBodyString,
         });
 
-        // TEMPORAIRE: Accepter le webhook même si la vérification HMAC échoue
-        // TODO: Corriger la capture du body brut pour que la vérification fonctionne
-        strapi.log.warn(
-          "⚠️  Vérification HMAC désactivée temporairement - À corriger en production"
-        );
-        // return ctx.unauthorized("Invalid webhook signature");
+        strapi.log.error("Signature HMAC invalide", {
+          received: hmac,
+          calculatedFromParsed: hmacFromParsed,
+          bodyLength: bodyForHmac.length,
+          parsedBodyLength: parsedBodyString.length,
+          bodiesMatch: bodyForHmac === parsedBodyString,
+        });
+        return ctx.unauthorized("Invalid webhook signature");
       } else {
         strapi.log.info("✅ Signature HMAC valide");
       }

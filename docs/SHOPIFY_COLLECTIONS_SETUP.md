@@ -7,9 +7,10 @@ Ce document explique comment configurer les webhooks Shopify pour synchroniser a
 1. [Architecture](#architecture)
 2. [Configuration Shopify](#configuration-shopify)
 3. [Configuration Strapi](#configuration-strapi)
-4. [Endpoints disponibles](#endpoints-disponibles)
-5. [Flux de synchronisation](#flux-de-synchronisation)
-6. [Troubleshooting](#troubleshooting)
+4. [Configuration Production](#configuration-production)
+5. [Endpoints disponibles](#endpoints-disponibles)
+6. [Flux de synchronisation](#flux-de-synchronisation)
+7. [Troubleshooting](#troubleshooting)
 
 ## Architecture
 
@@ -100,6 +101,71 @@ npm run develop
 # ou
 yarn develop
 ```
+
+## Configuration Production
+
+### Différence Local vs Production
+
+- **En local** : ngrok expose votre serveur sur une URL temporaire (ex: `https://abc123.ngrok.io`). Les webhooks Shopify étaient configurés avec cette URL.
+- **En production** : Shopify doit pointer vers l’URL publique de votre Strapi (ex: `https://api.votresite.com/api/shopify/webhook`).
+
+### Étapes pour activer la sync en production
+
+#### 1. Définir l’URL de production
+
+Remplacez `https://api.votresite.com` par l’URL réelle de votre backend Strapi.
+
+#### 2. Configurer les webhooks Shopify pour la production
+
+1. Allez dans **Shopify Admin** → **Settings** → **Apps and integrations** → **Webhooks**
+2. Pour chaque webhook existant (products/create, products/update, products/delete, collections/create, etc.) :
+   - Cliquez sur le webhook
+   - Mettez à jour l’URL avec votre URL de production :
+     ```
+     https://api.votresite.com/api/shopify/webhook
+     ```
+   - Sauvegardez
+
+   **Ou** supprimez les anciens webhooks (URL ngrok) et créez-en de nouveaux avec l’URL de production.
+
+#### 3. Variables d’environnement en production
+
+Sur votre hébergeur (Railway, Render, Vercel, etc.), configurez :
+
+```env
+SHOPIFY_API_KEY=...
+SHOPIFY_API_SECRET=...
+SHOPIFY_ADMIN_API_ACCESS_TOKEN=...
+SHOPIFY_SHOP_NAME=...
+SHOPIFY_API_VERSION=2023-04
+SHOPIFY_WEBHOOK_SECRET=...
+```
+
+`SHOPIFY_WEBHOOK_SECRET` peut être le même que `SHOPIFY_API_SECRET`, ou le secret affiché par Shopify lors de la création du webhook.
+
+#### 4. Vérifier que l’endpoint est accessible
+
+```bash
+curl -X POST https://api.votresite.com/api/shopify/webhook \
+  -H "Content-Type: application/json" \
+  -H "X-Shopify-Topic: products/update" \
+  -H "X-Shopify-HMAC-SHA256: test" \
+  -d '{}'
+```
+
+Une réponse `401` ou `200` indique que l’endpoint est bien atteint (la 401 est normale sans vraie signature HMAC).
+
+#### 5. Tester la synchro
+
+1. Créez ou modifiez un produit dans Shopify Admin
+2. Vérifiez les logs de votre application pour voir si le webhook est reçu
+3. Vérifiez dans Strapi Admin que le produit est bien créé ou mis à jour
+
+### Points importants
+
+- **HTTPS** : L’URL de production doit être en HTTPS (Shopify n’envoie pas vers des URLs non sécurisées).
+- **Accès public** : L’URL doit être accessible depuis Internet (pas une IP locale).
+- **Port 443** : En général, les hébergeurs exposent déjà le port 443 via un reverse proxy.
 
 ## Endpoints disponibles
 
