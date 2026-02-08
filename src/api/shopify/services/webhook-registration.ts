@@ -41,13 +41,16 @@ export default {
 
     const webhookUrl = `${publicUrl}/api/shopify/webhook`;
 
+    // Note: Collections webhooks require special permissions not available in standard scopes
+    // Only registering products webhooks for now
     const webhookTopics = [
       'products/create',
       'products/update',
       'products/delete',
-      'collections/create',
-      'collections/update',
-      'collections/delete',
+      // Collections webhooks temporarily disabled due to API scope limitations
+      // 'collections/create',
+      // 'collections/update',
+      // 'collections/delete',
     ];
 
     strapi.log.info('🔄 Starting Shopify webhook registration...', {
