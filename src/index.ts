@@ -19,8 +19,8 @@ export default {
    * run jobs, or perform some special logic.
    */
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    // Register Shopify webhooks on startup
-    if (process.env.NODE_ENV !== 'test') {
+    // Register Shopify webhooks on startup (optional, can be disabled via env)
+    if (process.env.NODE_ENV !== 'test' && process.env.SHOPIFY_AUTO_REGISTER_WEBHOOKS === 'true') {
       try {
         const webhookRegistrationService = strapi.service(
           'api::shopify.webhook-registration'
@@ -34,6 +34,8 @@ export default {
         );
         // Don't block startup if webhook registration fails
       }
+    } else if (process.env.NODE_ENV !== 'test') {
+      strapi.log.info('ℹ️  Shopify webhook auto-registration disabled (set SHOPIFY_AUTO_REGISTER_WEBHOOKS=true to enable)');
     }
   },
 };
