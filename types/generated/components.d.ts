@@ -214,6 +214,18 @@ export interface ArticleTitleContent extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonBottomMarquee extends Struct.ComponentSchema {
+  collectionName: 'components_common_bottom_marquees';
+  info: {
+    displayName: 'Bottom marquee';
+    icon: 'arrowRight';
+  };
+  attributes: {
+    firstText: Schema.Attribute.String;
+    secondText: Schema.Attribute.String;
+  };
+}
+
 export interface CommonCenteredText extends Struct.ComponentSchema {
   collectionName: 'components_common_centered_texts';
   info: {
@@ -280,6 +292,22 @@ export interface CommonSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonTextImage extends Struct.ComponentSchema {
+  collectionName: 'components_common_text_images';
+  info: {
+    displayName: 'Text Image';
+    icon: 'layout';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imageLeft: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    labelLink: Schema.Attribute.String;
+    link: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface CommonVideoFullWidth extends Struct.ComponentSchema {
   collectionName: 'components_common_video_full_widths';
   info: {
@@ -291,6 +319,20 @@ export interface CommonVideoFullWidth extends Struct.ComponentSchema {
     playerText: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Play video'>;
     url: Schema.Attribute.String;
+  };
+}
+
+export interface CommonVideoPortrait extends Struct.ComponentSchema {
+  collectionName: 'components_common_video_portraits';
+  info: {
+    displayName: 'Video portrait';
+    icon: 'play';
+  };
+  attributes: {
+    bottomTitle: Schema.Attribute.Blocks;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.Blocks;
+    video: Schema.Attribute.Media<'videos'>;
   };
 }
 
@@ -410,12 +452,15 @@ declare module '@strapi/strapi' {
       'article.product': ArticleProduct;
       'article.quote': ArticleQuote;
       'article.title-content': ArticleTitleContent;
+      'common.bottom-marquee': CommonBottomMarquee;
       'common.centered-text': CommonCenteredText;
       'common.link': CommonLink;
       'common.menu-marque': CommonMenuMarque;
       'common.section-push': CommonSectionPush;
       'common.seo': CommonSeo;
+      'common.text-image': CommonTextImage;
       'common.video-full-width': CommonVideoFullWidth;
+      'common.video-portrait': CommonVideoPortrait;
       'homepage.hero': HomepageHero;
       'homepage.hero-article': HomepageHeroArticle;
       'homepage.home-products': HomepageHomeProducts;

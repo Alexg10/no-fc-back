@@ -3,6 +3,13 @@
 
 import crypto from "crypto";
 
+/** Extrait l'ID numérique depuis Shopify (supporte format REST 123 ou GraphQL gid://shopify/Product/123) */
+function extractShopifyId(id: string | number): string {
+  if (typeof id === "number") return id.toString();
+  const match = String(id).match(/\/(\d+)$/);
+  return match ? match[1] : String(id);
+}
+
 export default {
   /**
    * Vérifie la signature HMAC d'un webhook Shopify
@@ -33,11 +40,15 @@ export default {
         title: productData.title,
       });
 
-      // Synchroniser les données du produit avec Strapi
+      const shopifyId = extractShopifyId(productData.id);
+      const handle =
+        productData.handle ||
+        `product-${shopifyId}`;
+
       const existingProducts = await strapi.entityService.findMany(
         "api::product.product",
         {
-          filters: { shopifyId: productData.id.toString() },
+          filters: { shopifyId },
           limit: 1,
         }
       );
@@ -46,8 +57,8 @@ export default {
         title: productData.title || "Sans titre",
         description: productData.body_html || "",
         price: parseFloat(productData.variants?.[0]?.price || "0"),
-        shopifyId: productData.id.toString(),
-        handle: productData.handle || null,
+        shopifyId,
+        handle,
       };
 
       if (existingProducts && existingProducts.length > 0) {
@@ -68,7 +79,10 @@ export default {
         const created = await strapi.entityService.create(
           "api::product.product",
           {
-            data: productDataToUpdate,
+            data: {
+              ...productDataToUpdate,
+              publishedAt: new Date(),
+            },
           }
         );
         strapi.log.info("Produit créé (via update)", {
@@ -98,10 +112,11 @@ export default {
       });
 
       // Vérifier si le produit existe déjà (au cas où le webhook create arrive après un update)
+      const shopifyId = extractShopifyId(productData.id);
       const existingProducts = await strapi.entityService.findMany(
         "api::product.product",
         {
-          filters: { shopifyId: productData.id.toString() },
+          filters: { shopifyId },
           limit: 1,
         }
       );
@@ -115,6 +130,10 @@ export default {
         return await this.processProductUpdate(productData);
       }
 
+      const handle =
+        productData.handle ||
+        `product-${shopifyId}`;
+
       const product = await strapi.entityService.create(
         "api::product.product",
         {
@@ -122,8 +141,9 @@ export default {
             title: productData.title || "Sans titre",
             description: productData.body_html || "",
             price: parseFloat(productData.variants?.[0]?.price || "0"),
-            shopifyId: productData.id.toString(),
-            handle: productData.handle || null,
+            shopifyId,
+            handle,
+            publishedAt: new Date(), // Publier immédiatement pour que le produit soit visible
           },
         }
       );
@@ -154,10 +174,11 @@ export default {
    * Traite la suppression d'un produit depuis Shopify
    */
   async processProductDelete(productData: any) {
+    const shopifyId = extractShopifyId(productData.id);
     const existingProduct = await strapi.entityService.findMany(
       "api::product.product",
       {
-        filters: { shopifyId: productData.id.toString() },
+        filters: { shopifyId },
         limit: 1,
       }
     );

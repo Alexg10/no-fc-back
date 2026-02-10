@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_common_video_portraits",
+  "info": {
+    "displayName": "Video portrait",
+    "icon": "play"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "blocks"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "bottomTitle": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

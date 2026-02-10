@@ -42,27 +42,16 @@ export default {
       strapi.log.info("Topic webhook", { topic: webhookTopic });
 
       // Récupérer le body brut pour la vérification HMAC
-      // koa-body avec includeUnparsed: true expose le body brut via un Symbol
-      const unparsedSymbol = Symbol.for("unparsedBody");
-      let rawBody = (ctx.request.body as any)?.[unparsedSymbol];
-
-      // Debug détaillé
-      const hasSymbol = !!(ctx.request.body as any)?.[unparsedSymbol];
-      strapi.log.info(
-        `Debug body brut - hasSymbol: ${hasSymbol}, rawBody type: ${rawBody ? typeof rawBody : "undefined"}`
-      );
-
-      if (rawBody) {
-        strapi.log.info(
-          `RawBody is Buffer: ${rawBody instanceof Buffer}, is String: ${typeof rawBody === "string"}`
-        );
-      }
-
-      // Fallback si le Symbol n'est pas disponible
+      // Priorité: middleware shopify-raw-body (capture avant parsing) > koa-body unparsed > fallback
+      let rawBody = (ctx.request as any).rawBody;
       if (!rawBody) {
-        rawBody = (ctx.request as any).rawBody || ctx.request.body;
+        const unparsedSymbol = Symbol.for("unparsedBody");
+        rawBody = (ctx.request.body as any)?.[unparsedSymbol];
+      }
+      if (!rawBody) {
+        rawBody = ctx.request.body;
         strapi.log.warn(
-          "Body brut non disponible via Symbol, utilisation du fallback"
+          "Body brut non disponible, utilisation du body parsé (vérification HMAC peut échouer)"
         );
       }
 

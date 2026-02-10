@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_common_text_images",
+  "info": {
+    "displayName": "Text Image",
+    "icon": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "labelLink": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageLeft": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

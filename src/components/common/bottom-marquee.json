@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_common_bottom_marquees",
+  "info": {
+    "displayName": "Bottom marquee",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "firstText": {
+      "type": "string"
+    },
+    "secondText": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

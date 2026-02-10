@@ -1,4 +1,4 @@
-import type { Core } from '@strapi/strapi';
+// import type { Core } from '@strapi/strapi';
 
 export default {
   /**
@@ -7,9 +7,7 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register({ strapi }: { strapi: Core.Strapi }) {
-    // Register hooks and middleware
-  },
+  register(/* { strapi }: { strapi: Core.Strapi } */) {},
 
   /**
    * An asynchronous bootstrap function that runs before
@@ -18,24 +16,5 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    // Register Shopify webhooks on startup (optional, can be disabled via env)
-    if (process.env.NODE_ENV !== 'test' && process.env.SHOPIFY_AUTO_REGISTER_WEBHOOKS === 'true') {
-      try {
-        const webhookRegistrationService = strapi.service(
-          'api::shopify.webhook-registration'
-        );
-        await webhookRegistrationService.registerWebhooks();
-        strapi.log.info('✅ Shopify webhooks registered successfully');
-      } catch (error) {
-        strapi.log.error(
-          '❌ Error registering Shopify webhooks:',
-          error instanceof Error ? error.message : String(error)
-        );
-        // Don't block startup if webhook registration fails
-      }
-    } else if (process.env.NODE_ENV !== 'test') {
-      strapi.log.info('ℹ️  Shopify webhook auto-registration disabled (set SHOPIFY_AUTO_REGISTER_WEBHOOKS=true to enable)');
-    }
-  },
+  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
 };
