@@ -67,7 +67,8 @@
         }
       },
       "components": [
-        "common.centered-text"
+        "common.centered-text",
+        "article.custom-container"
       ]
     }
   }

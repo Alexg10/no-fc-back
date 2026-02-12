@@ -484,7 +484,11 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['common.video-portrait', 'common.text-image']
+      [
+        'common.video-portrait',
+        'common.text-image',
+        'common.photo-and-text-repeat',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1029,7 +1033,9 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    blocks: Schema.Attribute.DynamicZone<['common.centered-text']> &
+    blocks: Schema.Attribute.DynamicZone<
+      ['common.centered-text', 'article.custom-container']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

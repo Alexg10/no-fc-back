@@ -13,6 +13,7 @@
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "ngrok": "ngrok http 1337",
     "postinstall": "node -e \"try{const p=require.resolve('better-sqlite3/package.json'); require('child_process').execSync('npm run build-release', {cwd: require('path').dirname(p), stdio:'inherit'})}catch(e){}\""
   },
   "dependencies": {

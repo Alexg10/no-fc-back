@@ -41,6 +41,16 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "quote": {
+      "type": "component",
+      "component": "article.quote",
+      "repeatable": false
+    },
+    "video": {
+      "type": "component",
+      "component": "common.video-full-width",
+      "repeatable": false
     }
   },
   "config": {}

@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_common_photo_and_text_repeats",
+  "info": {
+    "displayName": "Photo & text repeat",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "black",
+        "pink",
+        "lime",
+        "blue"
+      ]
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "black",
+        "pink",
+        "lime",
+        "blue"
+      ]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

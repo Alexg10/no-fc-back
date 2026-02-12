@@ -101,7 +101,9 @@ export interface ArticleCustomContainer extends Struct.ComponentSchema {
     backgroundImage: Schema.Attribute.Media<'images'>;
     content: Schema.Attribute.Blocks;
     image: Schema.Attribute.Media<'images'>;
+    quote: Schema.Attribute.Component<'article.quote', false>;
     title: Schema.Attribute.String;
+    video: Schema.Attribute.Component<'common.video-full-width', false>;
     whiteText: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
   };
 }
@@ -261,6 +263,27 @@ export interface CommonMenuMarque extends Struct.ComponentSchema {
   attributes: {
     label: Schema.Attribute.String;
     link: Schema.Attribute.String;
+  };
+}
+
+export interface CommonPhotoAndTextRepeat extends Struct.ComponentSchema {
+  collectionName: 'components_common_photo_and_text_repeats';
+  info: {
+    displayName: 'Photo & text repeat';
+    icon: 'bulletList';
+  };
+  attributes: {
+    backgroundColor: Schema.Attribute.Enumeration<
+      ['white', 'black', 'pink', 'lime', 'blue']
+    >;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    text: Schema.Attribute.String;
+    textColor: Schema.Attribute.Enumeration<
+      ['white', 'black', 'pink', 'lime', 'blue']
+    >;
   };
 }
 
@@ -456,6 +479,7 @@ declare module '@strapi/strapi' {
       'common.centered-text': CommonCenteredText;
       'common.link': CommonLink;
       'common.menu-marque': CommonMenuMarque;
+      'common.photo-and-text-repeat': CommonPhotoAndTextRepeat;
       'common.section-push': CommonSectionPush;
       'common.seo': CommonSeo;
       'common.text-image': CommonTextImage;
