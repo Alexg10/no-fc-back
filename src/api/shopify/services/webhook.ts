@@ -55,7 +55,6 @@ export default {
 
       const productDataToUpdate = {
         title: productData.title || "Sans titre",
-        description: productData.body_html || "",
         price: parseFloat(productData.variants?.[0]?.price || "0"),
         shopifyId,
         handle,
@@ -139,7 +138,6 @@ export default {
         {
           data: {
             title: productData.title || "Sans titre",
-            description: productData.body_html || "",
             price: parseFloat(productData.variants?.[0]?.price || "0"),
             shopifyId,
             handle,

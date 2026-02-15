@@ -8,8 +8,6 @@
     "description": "Shopify collections synchronized from the Shopify store"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
     "draftAndPublish": true
   },
   "pluginOptions": {
@@ -20,32 +18,42 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "shopifyId": {
       "type": "string",
-      "unique": true,
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true,
+      "unique": true
     },
     "handle": {
       "type": "string",
-      "unique": true,
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true,
+      "unique": true
+    },
+    "nbProductToShow": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": 4,
+      "min": 1
     }
   }
 }

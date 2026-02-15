@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_products_product_shipping_infos",
+  "info": {
+    "displayName": "Product shipping infos",
+    "icon": "car"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

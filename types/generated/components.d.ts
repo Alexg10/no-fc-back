@@ -422,6 +422,19 @@ export interface ProductsHero extends Struct.ComponentSchema {
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     description: Schema.Attribute.Blocks;
     title: Schema.Attribute.String;
+    whiteText: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ProductsProductShippingInfos extends Struct.ComponentSchema {
+  collectionName: 'components_products_product_shipping_infos';
+  info: {
+    displayName: 'Product shipping infos';
+    icon: 'car';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -490,6 +503,7 @@ declare module '@strapi/strapi' {
       'homepage.home-products': HomepageHomeProducts;
       'homepage.newest-articles': HomepageNewestArticles;
       'products.hero': ProductsHero;
+      'products.product-shipping-infos': ProductsProductShippingInfos;
       'simple-page.content': SimplePageContent;
       'simple-page.faq-section': SimplePageFaqSection;
       'simple-page.faqs': SimplePageFaqs;

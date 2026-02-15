@@ -609,8 +609,6 @@ export interface ApiCollectionCollection extends Struct.CollectionTypeSchema {
   };
   options: {
     draftAndPublish: true;
-    increments: true;
-    timestamps: true;
   };
   pluginOptions: {
     i18n: {
@@ -634,6 +632,19 @@ export interface ApiCollectionCollection extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::collection.collection'
     >;
+    nbProductToShow: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<4>;
     publishedAt: Schema.Attribute.DateTime;
     shopifyId: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -843,6 +854,19 @@ export interface ApiGeneralGeneral extends Struct.SingleTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    selectedCollections: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collection.collection'
+    >;
+    shippingInfos: Schema.Attribute.Component<
+      'products.product-shipping-infos',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     socials: Schema.Attribute.Component<'common.link', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

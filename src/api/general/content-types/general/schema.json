@@ -44,6 +44,21 @@
       },
       "component": "common.bottom-marquee",
       "repeatable": false
+    },
+    "shippingInfos": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "products.product-shipping-infos",
+      "repeatable": false
+    },
+    "selectedCollections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::collection.collection"
     }
   }
 }
