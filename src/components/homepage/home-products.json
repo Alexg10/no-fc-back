@@ -7,7 +7,7 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "blocks"
     },
     "products": {
       "type": "relation",

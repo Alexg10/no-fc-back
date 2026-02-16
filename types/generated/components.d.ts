@@ -395,7 +395,7 @@ export interface HomepageHomeProducts extends Struct.ComponentSchema {
   };
   attributes: {
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.Blocks;
   };
 }
 
