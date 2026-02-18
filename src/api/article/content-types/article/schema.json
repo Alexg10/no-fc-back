@@ -95,6 +95,20 @@
         "article.columns-blocks",
         "article.large-image"
       ]
+    },
+    "titleColor": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "mainColor",
+      "enum": [
+        "mainColor",
+        "white",
+        "black"
+      ]
     }
   }
 }
