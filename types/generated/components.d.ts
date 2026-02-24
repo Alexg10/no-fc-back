@@ -209,6 +209,21 @@ export interface ArticleTitleContent extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonAboutScrollAnim extends Struct.ComponentSchema {
+  collectionName: 'components_common_about_scroll_anims';
+  info: {
+    displayName: 'About scroll anim';
+    icon: 'command';
+  };
+  attributes: {
+    firstImages: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    fourthSceneImages: Schema.Attribute.Media<'images', true>;
+  };
+}
+
 export interface CommonBottomMarquee extends Struct.ComponentSchema {
   collectionName: 'components_common_bottom_marquees';
   info: {
@@ -481,6 +496,7 @@ declare module '@strapi/strapi' {
       'article.product': ArticleProduct;
       'article.quote': ArticleQuote;
       'article.title-content': ArticleTitleContent;
+      'common.about-scroll-anim': CommonAboutScrollAnim;
       'common.bottom-marquee': CommonBottomMarquee;
       'common.centered-text': CommonCenteredText;
       'common.link': CommonLink;

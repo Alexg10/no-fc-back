@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_common_about_scroll_anims",
+  "info": {
+    "displayName": "About scroll anim",
+    "icon": "command"
+  },
+  "options": {},
+  "attributes": {
+    "firstImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fourthSceneImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

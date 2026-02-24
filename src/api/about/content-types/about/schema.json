@@ -25,7 +25,8 @@
       "components": [
         "common.video-portrait",
         "common.text-image",
-        "common.photo-and-text-repeat"
+        "common.photo-and-text-repeat",
+        "common.about-scroll-anim"
       ]
     }
   }

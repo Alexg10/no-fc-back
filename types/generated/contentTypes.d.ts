@@ -488,6 +488,7 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
         'common.video-portrait',
         'common.text-image',
         'common.photo-and-text-repeat',
+        'common.about-scroll-anim',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
