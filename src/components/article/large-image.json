@@ -15,6 +15,15 @@
         "videos",
         "audios"
       ]
+    },
+    "size": {
+      "type": "enumeration",
+      "default": "medium",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ]
     }
   },
   "config": {}

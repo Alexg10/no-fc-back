@@ -489,6 +489,8 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
         'common.text-image',
         'common.photo-and-text-repeat',
         'common.about-scroll-anim',
+        'common.centered-text',
+        'common.video-full-width',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
