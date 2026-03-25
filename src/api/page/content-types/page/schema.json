@@ -38,6 +38,16 @@
         "simple-page.content",
         "simple-page.faqs"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "common.seo",
+      "repeatable": false
     }
   }
 }
