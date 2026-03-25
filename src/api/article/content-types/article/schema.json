@@ -15,6 +15,16 @@
     }
   },
   "attributes": {
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "common.seo",
+      "repeatable": false
+    },
     "title": {
       "type": "string",
       "pluginOptions": {
