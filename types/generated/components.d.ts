@@ -320,8 +320,8 @@ export interface CommonSeo extends Struct.ComponentSchema {
   };
   attributes: {
     keywords: Schema.Attribute.String;
-    mataImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     metaDescription: Schema.Attribute.Text;
+    metaImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     metaTitle: Schema.Attribute.String;
   };
 }
