@@ -11,6 +11,9 @@
     },
     "secondText": {
       "type": "string"
+    },
+    "marqueeLink": {
+      "type": "string"
     }
   },
   "config": {}

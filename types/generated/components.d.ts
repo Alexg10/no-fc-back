@@ -234,6 +234,7 @@ export interface CommonBottomMarquee extends Struct.ComponentSchema {
   };
   attributes: {
     firstText: Schema.Attribute.String;
+    marqueeLink: Schema.Attribute.String;
     secondText: Schema.Attribute.String;
   };
 }
