@@ -28,6 +28,7 @@
         "common.photo-and-text-repeat",
         "common.about-scroll-anim",
         "common.centered-text",
+        "common.table-grid",
         "common.video-full-width"
       ]
     }

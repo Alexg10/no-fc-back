@@ -327,6 +327,20 @@ export interface CommonSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonTableGrid extends Struct.ComponentSchema {
+  collectionName: 'components_common_table_grids';
+  info: {
+    description: 'Tableau \u00E9ditable (colonnes \u00D7 lignes), stock\u00E9 en JSON';
+    displayName: 'Table grid';
+    icon: 'grid';
+  };
+  attributes: {
+    caption: Schema.Attribute.String;
+    grid: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'global::table-grid'>;
+  };
+}
+
 export interface CommonTextImage extends Struct.ComponentSchema {
   collectionName: 'components_common_text_images';
   info: {
@@ -508,6 +522,7 @@ declare module '@strapi/strapi' {
       'common.photo-and-text-repeat': CommonPhotoAndTextRepeat;
       'common.section-push': CommonSectionPush;
       'common.seo': CommonSeo;
+      'common.table-grid': CommonTableGrid;
       'common.text-image': CommonTextImage;
       'common.video-full-width': CommonVideoFullWidth;
       'common.video-portrait': CommonVideoPortrait;

@@ -103,7 +103,8 @@
         "article.credits",
         "article.custom-container",
         "article.columns-blocks",
-        "article.large-image"
+        "article.large-image",
+        "common.table-grid"
       ]
     },
     "titleColor": {

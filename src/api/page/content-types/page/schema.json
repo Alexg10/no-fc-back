@@ -36,7 +36,8 @@
       },
       "components": [
         "simple-page.content",
-        "simple-page.faqs"
+        "simple-page.faqs",
+        "common.table-grid"
       ]
     },
     "seo": {

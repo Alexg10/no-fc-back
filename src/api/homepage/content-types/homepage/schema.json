@@ -44,6 +44,7 @@
       },
       "components": [
         "common.centered-text",
+        "common.table-grid",
         "homepage.home-products",
         "common.video-full-width",
         "homepage.newest-articles",

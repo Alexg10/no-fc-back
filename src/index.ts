@@ -1,20 +1,21 @@
-// import type { Core } from '@strapi/strapi';
+import type { Core } from '@strapi/strapi';
 
 export default {
   /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
+   * Enregistrement global du custom field `table-grid` (uid: `global::table-grid`).
+   * Nécessaire pour que le serveur reconnaisse le type même si le plugin local
+   * ne se charge pas correctement (ex. certains déploiements).
    */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register({ strapi }: { strapi: Core.Strapi }) {
+    strapi.customFields.register({
+      name: 'table-grid',
+      type: 'json',
+      inputSize: {
+        default: 12,
+        isResizable: true,
+      },
+    });
+  },
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+  bootstrap() {},
 };

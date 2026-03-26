@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_common_table_grids",
+  "info": {
+    "displayName": "Table grid",
+    "icon": "grid",
+    "description": "Tableau éditable (colonnes × lignes), stocké en JSON"
+  },
+  "options": {},
+  "attributes": {
+    "caption": {
+      "type": "string",
+      "required": false
+    },
+    "grid": {
+      "type": "customField",
+      "customField": "global::table-grid",
+      "required": false
+    }
+  },
+  "config": {}
+}

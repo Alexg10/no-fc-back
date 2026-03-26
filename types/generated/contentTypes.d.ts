@@ -490,6 +490,7 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
         'common.photo-and-text-repeat',
         'common.about-scroll-anim',
         'common.centered-text',
+        'common.table-grid',
         'common.video-full-width',
       ]
     > &
@@ -540,6 +541,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'article.custom-container',
         'article.columns-blocks',
         'article.large-image',
+        'common.table-grid',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -936,6 +938,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     blocks: Schema.Attribute.DynamicZone<
       [
         'common.centered-text',
+        'common.table-grid',
         'homepage.home-products',
         'common.video-full-width',
         'homepage.newest-articles',
@@ -1025,7 +1028,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['simple-page.content', 'simple-page.faqs']
+      ['simple-page.content', 'simple-page.faqs', 'common.table-grid']
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1074,7 +1077,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['common.centered-text', 'article.custom-container']
+      ['common.centered-text', 'common.table-grid', 'article.custom-container']
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

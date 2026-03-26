@@ -68,6 +68,7 @@
       },
       "components": [
         "common.centered-text",
+        "common.table-grid",
         "article.custom-container"
       ]
     }

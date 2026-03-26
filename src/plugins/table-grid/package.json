@@ -1,0 +1,16 @@
+{
+  "name": "table-grid",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Custom field: editable table grid (JSON) for Strapi",
+  "strapi": {
+    "name": "table-grid",
+    "displayName": "Table grid",
+    "kind": "plugin"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-server": "./server/src/index.js",
+    "./strapi-admin": "./admin/src/index.tsx"
+  }
+}
