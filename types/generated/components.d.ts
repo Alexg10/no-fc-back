@@ -206,6 +206,7 @@ export interface ArticleTitleContent extends Struct.ComponentSchema {
   attributes: {
     content: Schema.Attribute.Blocks;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    shortTitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
     twoColumns: Schema.Attribute.Boolean;
   };

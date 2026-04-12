@@ -24,6 +24,9 @@
         "videos",
         "audios"
       ]
+    },
+    "shortTitle": {
+      "type": "string"
     }
   },
   "config": {}
