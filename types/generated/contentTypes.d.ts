@@ -611,6 +611,44 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArticlesArchiveArticlesArchive
+  extends Struct.SingleTypeSchema {
+  collectionName: 'articles_archives';
+  info: {
+    displayName: 'ArticlesArchive';
+    pluralName: 'articles-archives';
+    singularName: 'articles-archive';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::articles-archive.articles-archive'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCollectionCollection extends Struct.CollectionTypeSchema {
   collectionName: 'collections';
   info: {
@@ -1688,6 +1726,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
+      'api::articles-archive.articles-archive': ApiArticlesArchiveArticlesArchive;
       'api::collection.collection': ApiCollectionCollection;
       'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;
