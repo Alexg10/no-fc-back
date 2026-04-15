@@ -120,6 +120,14 @@
         "white",
         "black"
       ]
+    },
+    "date": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
