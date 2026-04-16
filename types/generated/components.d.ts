@@ -308,6 +308,9 @@ export interface CommonSectionPush extends Struct.ComponentSchema {
   attributes: {
     button: Schema.Attribute.Component<'common.link', false>;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    coverMobile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     description: Schema.Attribute.Blocks;
     title: Schema.Attribute.String;
     whiteText: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
