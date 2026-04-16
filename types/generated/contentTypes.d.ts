@@ -860,6 +860,12 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::footer.footer'>;
+    newsletterConditionsText: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     topLinks: Schema.Attribute.Component<'common.link', true> &
       Schema.Attribute.SetPluginOptions<{

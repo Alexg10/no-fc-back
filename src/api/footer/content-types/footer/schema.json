@@ -34,6 +34,14 @@
       },
       "component": "common.link",
       "repeatable": true
+    },
+    "newsletterConditionsText": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
